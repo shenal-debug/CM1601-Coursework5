@@ -31,4 +31,33 @@ public class InventoryFileHandler {
 
     }
 
+    public void savePart(lk.cm1601.malabe_spare_system.model.Part part) {
+
+        try {
+
+            java.io.FileWriter writer = new java.io.FileWriter(
+                    "src/main/resources/data/inventory_legacy.txt", true);
+
+            writer.write(
+                    part.getPartCode() + "," +
+                            part.getPartName() + "," +
+                            part.getBrand() + "," +
+                            part.getPrice() + "," +
+                            part.getQuantity() + "," +
+                            part.getCategory() + "," +
+                            part.getDate() + "," +
+                            part.getImage() +
+                            System.lineSeparator()
+            );
+
+            writer.close();
+
+        } catch (IOException e) {
+
+            System.out.println("Unable to save part.");
+
+        }
+
+    }
+
 }

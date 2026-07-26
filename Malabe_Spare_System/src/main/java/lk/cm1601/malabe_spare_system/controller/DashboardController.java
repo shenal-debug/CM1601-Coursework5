@@ -3,6 +3,8 @@ package lk.cm1601.malabe_spare_system.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import lk.cm1601.malabe_spare_system.model.Part;
+
 public class DashboardController {
 
     @FXML
@@ -51,19 +53,33 @@ public class DashboardController {
                 txtBrand.getText().isEmpty() ||
                 txtPrice.getText().isEmpty() ||
                 txtQuantity.getText().isEmpty() ||
-                txtDate.getText().isEmpty() ||
-                cmbCategory.getValue() == null) {
+                cmbCategory.getValue() == null ||
+                txtDate.getText().isEmpty()) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Input Error");
+            alert.setTitle("Validation Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill in all fields.");
+            alert.setContentText("Please fill all fields.");
             alert.showAndWait();
-
             return;
         }
 
-        System.out.println("Validation Passed");
+        Part part = new Part(
+                txtPartCode.getText(),
+                txtPartName.getText(),
+                txtBrand.getText(),
+                Double.parseDouble(txtPrice.getText()),
+                Integer.parseInt(txtQuantity.getText()),
+                cmbCategory.getValue(),
+                txtDate.getText(),
+                ""
+        );
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText("Part object created successfully.");
+        alert.showAndWait();
     }
 
 }
