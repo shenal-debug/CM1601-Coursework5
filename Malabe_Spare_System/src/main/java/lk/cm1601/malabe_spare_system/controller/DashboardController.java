@@ -45,7 +45,25 @@ public class DashboardController {
 
     @FXML
     private void handleAddPart() {
-        System.out.println("Add Part button clicked!");
+
+        if (txtPartCode.getText().isEmpty() ||
+                txtPartName.getText().isEmpty() ||
+                txtBrand.getText().isEmpty() ||
+                txtPrice.getText().isEmpty() ||
+                txtQuantity.getText().isEmpty() ||
+                txtDate.getText().isEmpty() ||
+                cmbCategory.getValue() == null) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Input Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in all fields.");
+            alert.showAndWait();
+
+            return;
+        }
+
+        System.out.println("Validation Passed");
     }
 
 }
