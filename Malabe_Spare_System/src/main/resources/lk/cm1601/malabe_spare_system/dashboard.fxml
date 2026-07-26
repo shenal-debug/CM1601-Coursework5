@@ -62,7 +62,7 @@
         <TextField fx:id="txtDate" layoutX="150" layoutY="345" prefWidth="220" promptText="YYYY/MM/DD" />
 
         <!-- Buttons -->
-        <Button fx:id="btnAdd" layoutX="40" layoutY="410" prefWidth="100" text="Add Part" />
+        <Button fx:id="btnAdd" layoutX="40" layoutY="410" prefWidth="100" text="Add Part" onAction="#handleAddPart"/>
 
         <Button fx:id="btnUpdate" layoutX="150" layoutY="410" prefWidth="100" text="Update" />
 

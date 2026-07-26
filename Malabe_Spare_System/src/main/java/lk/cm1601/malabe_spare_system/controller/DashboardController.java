@@ -43,4 +43,9 @@ public class DashboardController {
         );
     }
 
+    @FXML
+    private void handleAddPart() {
+        System.out.println("Add Part button clicked!");
+    }
+
 }
