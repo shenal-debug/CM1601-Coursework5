@@ -17,9 +17,10 @@ public class HelloApplication extends Application {
         InventoryFileHandler inventoryFileHandler = new InventoryFileHandler();
         inventoryFileHandler.readInventoryFile();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-
+        FXMLLoader fxmlLoader = new FXMLLoader(
+                HelloApplication.class.getResource("dashboard.fxml")
+        );
+        Scene scene = new Scene(fxmlLoader.load(), 900, 650);
         stage.setTitle("Malabe Spare System");
         stage.setScene(scene);
         stage.show();

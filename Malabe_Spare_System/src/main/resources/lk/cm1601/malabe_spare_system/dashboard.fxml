@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="688.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.cm1601.malabe_spare_system.controller.DashboardController">
+
+    <children>
+
+        <!-- Menu -->
+        <MenuBar layoutX="0.0" layoutY="0.0" prefWidth="900.0">
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="Exit" />
+                    </items>
+                </Menu>
+
+                <Menu text="Edit" />
+
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+
+        <!-- Title -->
+        <Label layoutX="250.0" layoutY="40.0" style="-fx-font-size:22px; -fx-font-weight:bold;" text="Malabe Spare Parts Inventory System" />
+
+        <!-- Labels -->
+        <Label layoutX="40" layoutY="110" text="Part Code" />
+        <Label layoutX="40" layoutY="150" text="Part Name" />
+        <Label layoutX="40" layoutY="190" text="Brand" />
+        <Label layoutX="40" layoutY="230" text="Price" />
+        <Label layoutX="40" layoutY="270" text="Quantity" />
+        <Label layoutX="40" layoutY="310" text="Category" />
+        <Label layoutX="40" layoutY="350" text="Date" />
+
+        <!-- TextFields -->
+        <TextField fx:id="txtPartCode" layoutX="150" layoutY="105" prefWidth="220" />
+
+        <TextField fx:id="txtPartName" layoutX="150" layoutY="145" prefWidth="220" />
+
+        <TextField fx:id="txtBrand" layoutX="150" layoutY="185" prefWidth="220" />
+
+        <TextField fx:id="txtPrice" layoutX="150" layoutY="225" prefWidth="220" />
+
+        <TextField fx:id="txtQuantity" layoutX="150" layoutY="265" prefWidth="220" />
+
+        <ComboBox fx:id="cmbCategory" layoutX="150" layoutY="305" prefWidth="220" promptText="Select Category" />
+
+        <TextField fx:id="txtDate" layoutX="150" layoutY="345" prefWidth="220" promptText="YYYY/MM/DD" />
+
+        <!-- Buttons -->
+        <Button fx:id="btnAdd" layoutX="40" layoutY="410" prefWidth="100" text="Add Part" />
+
+        <Button fx:id="btnUpdate" layoutX="150" layoutY="410" prefWidth="100" text="Update" />
+
+        <Button fx:id="btnDelete" layoutX="260" layoutY="410" prefWidth="100" text="Delete" />
+
+        <Button fx:id="btnSearch" layoutX="370" layoutY="410" prefWidth="100" text="Search" />
+
+        <Button fx:id="btnClear" layoutX="480" layoutY="410" prefWidth="100" text="Clear" />
+
+        <Button fx:id="btnViewAll" layoutX="590" layoutY="410" prefWidth="100" text="View All" />
+
+        <!-- Table -->
+        <TableView fx:id="tableParts" layoutX="40" layoutY="470" prefHeight="200.0" prefWidth="820">
+
+            <columns>
+
+                <TableColumn fx:id="colCode" prefWidth="110" text="Part Code" />
+
+                <TableColumn fx:id="colName" prefWidth="150" text="Part Name" />
+
+                <TableColumn fx:id="colBrand" prefWidth="110" text="Brand" />
+
+                <TableColumn fx:id="colPrice" prefWidth="90" text="Price" />
+
+                <TableColumn fx:id="colQuantity" prefWidth="90" text="Quantity" />
+
+                <TableColumn fx:id="colCategory" prefWidth="120" text="Category" />
+
+                <TableColumn fx:id="colDate" prefWidth="150" text="Date" />
+
+            </columns>
+
+        </TableView>
+
+    </children>
+
+</AnchorPane>
