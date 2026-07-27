@@ -82,6 +82,29 @@
 
         <Button fx:id="btnPointOfSale" layoutX="390" layoutY="455" onAction="#handlePointOfSale" prefWidth="150" text="Point of Sale" />
 
+        <!-- Inventory Summary -->
+
+        <Label layoutX="600.0" layoutY="410.0" text="Total Parts :" />
+
+        <Label fx:id="lblTotalParts"
+               layoutX="700.0"
+               layoutY="410.0"
+               text="0" />
+
+        <Label layoutX="600.0" layoutY="435.0" text="Total Stock :" />
+
+        <Label fx:id="lblTotalStock"
+               layoutX="700.0"
+               layoutY="435.0"
+               text="0" />
+
+        <Label layoutX="600.0" layoutY="460.0" text="Inventory Value :" />
+
+        <Label fx:id="lblInventoryValue"
+               layoutX="720.0"
+               layoutY="460.0"
+               text="Rs. 0.00" />
+
         <!-- Table -->
         <TableView fx:id="tableParts" layoutX="40" layoutY="515" prefHeight="155.0" prefWidth="820">
 

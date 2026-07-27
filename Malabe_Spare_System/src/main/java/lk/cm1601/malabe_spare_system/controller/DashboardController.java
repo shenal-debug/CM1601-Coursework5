@@ -67,6 +67,15 @@ public class DashboardController {
     private TableColumn<Part, String> colDate;
 
     @FXML
+    private Label lblTotalParts;
+
+    @FXML
+    private Label lblTotalStock;
+
+    @FXML
+    private Label lblInventoryValue;
+
+    @FXML
     public void initialize() {
 
         System.out.println("Dashboard Loaded");
@@ -106,6 +115,36 @@ public class DashboardController {
                 }
 
         );
+
+        updateInventorySummary();
+    }
+
+    private void updateInventorySummary() {
+
+        InventoryFileHandler fileHandler = new InventoryFileHandler();
+
+        List<Part> parts = fileHandler.getAllParts();
+
+        int totalParts = parts.size();
+        int totalStock = 0;
+        double totalValue = 0;
+
+        for (Part part : parts) {
+
+            totalStock += part.getQuantity();
+
+            totalValue += part.getPrice() * part.getQuantity();
+
+        }
+
+        lblTotalParts.setText(String.valueOf(totalParts));
+
+        lblTotalStock.setText(String.valueOf(totalStock));
+
+        lblInventoryValue.setText(
+                "Rs. " + String.format("%.2f", totalValue)
+        );
+
     }
 
     @FXML
@@ -153,6 +192,8 @@ public class DashboardController {
         alert.setHeaderText(null);
         alert.setContentText("Part object created successfully.");
         alert.showAndWait();
+
+        updateInventorySummary();
     }
 
     @FXML
@@ -234,6 +275,8 @@ public class DashboardController {
         );
 
         tableParts.setItems(partList);
+
+        updateInventorySummary();
 
     }
 
@@ -362,6 +405,8 @@ public class DashboardController {
 
         }
 
+        updateInventorySummary();
+
     }
 
     @FXML
@@ -424,6 +469,7 @@ public class DashboardController {
 
         }
 
+        updateInventorySummary();
     }
 
     @FXML
