@@ -72,7 +72,7 @@
 
         <Button fx:id="btnClear" layoutX="480" layoutY="410" prefWidth="100" text="Clear" />
 
-        <Button fx:id="btnViewAll" layoutX="590" layoutY="410" prefWidth="100" text="View All" />
+        <Button fx:id="btnViewAll" onAction="#handleViewAll" layoutX="590" layoutY="410" prefWidth="100" text="View All" />
 
         <Button fx:id="btnLowStock"
                 layoutX="40"

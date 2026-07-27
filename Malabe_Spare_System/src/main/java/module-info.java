@@ -6,6 +6,8 @@ module lk.cm1601.malabe_spare_system {
     opens lk.cm1601.malabe_spare_system to javafx.fxml;
     opens lk.cm1601.malabe_spare_system.controller to javafx.fxml;
 
+    opens lk.cm1601.malabe_spare_system.model to javafx.base;
+
     exports lk.cm1601.malabe_spare_system;
     exports lk.cm1601.malabe_spare_system.controller;
 }

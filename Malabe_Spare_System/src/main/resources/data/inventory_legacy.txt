@@ -8,4 +8,3 @@ P007, 3-Wheeler Canopy Cover, Local, 8500.50, 5, BODYWORK, 15-Aug-2023, canopy.p
 P008|Piaggio Ape Filter|Piaggio|Rs.1100.00| 0 | Engine | 2024-02-28 | filter_ape.jpeg
 P009,  Ignition Coil 2-Stroke , Bajaj , 2200 , 18 ; electrical ; 2023-09-01 ;
 P010| Rear View Mirror | ; 800.00 | 45 | Bodywork | 10/10/2023 | mirror.png
-P011,Test Part,Bajaj,1000.0,5,Engine,2026-07-27,

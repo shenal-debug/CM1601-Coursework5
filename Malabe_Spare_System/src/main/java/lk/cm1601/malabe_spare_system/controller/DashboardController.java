@@ -1,10 +1,12 @@
 package lk.cm1601.malabe_spare_system.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import lk.cm1601.malabe_spare_system.model.Part;
-
 import lk.cm1601.malabe_spare_system.filehandler.InventoryFileHandler;
 
 public class DashboardController {
@@ -31,7 +33,28 @@ public class DashboardController {
     private ComboBox<String> cmbCategory;
 
     @FXML
-    private TableView<?> tableParts;
+    private TableView<Part> tableParts;
+
+    @FXML
+    private TableColumn<Part, String> colCode;
+
+    @FXML
+    private TableColumn<Part, String> colName;
+
+    @FXML
+    private TableColumn<Part, String> colBrand;
+
+    @FXML
+    private TableColumn<Part, Double> colPrice;
+
+    @FXML
+    private TableColumn<Part, Integer> colQuantity;
+
+    @FXML
+    private TableColumn<Part, String> colCategory;
+
+    @FXML
+    private TableColumn<Part, String> colDate;
 
     @FXML
     public void initialize() {
@@ -45,6 +68,14 @@ public class DashboardController {
                 "Accessories",
                 "Suspension"
         );
+
+        colCode.setCellValueFactory(new PropertyValueFactory<>("partCode"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("partName"));
+        colBrand.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        colQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 
     @FXML
@@ -117,6 +148,19 @@ public class DashboardController {
         alert.setHeaderText(null);
         alert.setContentText("Point of Sale feature will be implemented in the next commit.");
         alert.showAndWait();
+
+    }
+
+    @FXML
+    private void handleViewAll() {
+
+        InventoryFileHandler fileHandler = new InventoryFileHandler();
+
+        ObservableList<Part> partList = FXCollections.observableArrayList(
+                fileHandler.getAllParts()
+        );
+
+        tableParts.setItems(partList);
 
     }
 
