@@ -5,6 +5,8 @@ import javafx.scene.control.*;
 
 import lk.cm1601.malabe_spare_system.model.Part;
 
+import lk.cm1601.malabe_spare_system.filehandler.InventoryFileHandler;
+
 public class DashboardController {
 
     @FXML
@@ -74,6 +76,9 @@ public class DashboardController {
                 txtDate.getText(),
                 ""
         );
+
+        InventoryFileHandler fileHandler = new InventoryFileHandler();
+        fileHandler.savePart(part);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
