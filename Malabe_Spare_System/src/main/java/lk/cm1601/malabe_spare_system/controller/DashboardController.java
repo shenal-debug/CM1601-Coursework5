@@ -5,9 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import lk.cm1601.malabe_spare_system.model.Part;
+import lk.cm1601.malabe_spare_system.filehandler.DealerFileHandler;
 import lk.cm1601.malabe_spare_system.filehandler.InventoryFileHandler;
+import lk.cm1601.malabe_spare_system.model.Dealer;
+import lk.cm1601.malabe_spare_system.model.Part;
+
+import java.util.List;
 
 public class DashboardController {
 
@@ -154,10 +157,29 @@ public class DashboardController {
     @FXML
     private void handleDealerSelection() {
 
+        DealerFileHandler dealerFileHandler = new DealerFileHandler();
+
+        List<Dealer> selectedDealers = dealerFileHandler.getRandomDealers();
+
+        StringBuilder message = new StringBuilder();
+
+        for (Dealer dealer : selectedDealers) {
+
+            message.append(dealer.getDealerID())
+                    .append(" - ")
+                    .append(dealer.getDealerName())
+                    .append(" - ")
+                    .append(dealer.getPhone())
+                    .append(" - ")
+                    .append(dealer.getLocation())
+                    .append("\n");
+
+        }
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Dealer Selection");
-        alert.setHeaderText(null);
-        alert.setContentText("Dealer Selection feature will be implemented in the next commit.");
+        alert.setTitle("Selected Dealers");
+        alert.setHeaderText("Randomly Selected Dealers");
+        alert.setContentText(message.toString());
         alert.showAndWait();
 
     }
