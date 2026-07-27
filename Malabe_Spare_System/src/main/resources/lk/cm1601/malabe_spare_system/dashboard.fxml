@@ -64,7 +64,7 @@
         <!-- Buttons -->
         <Button fx:id="btnAdd" layoutX="40" layoutY="410" prefWidth="100" text="Add Part" onAction="#handleAddPart"/>
 
-        <Button fx:id="btnUpdate" layoutX="150" layoutY="410" prefWidth="100" text="Update" />
+        <Button fx:id="btnUpdate" layoutX="150" layoutY="410" prefWidth="100" text="Update" onAction="#handleUpdate"/>
 
         <Button fx:id="btnDelete" layoutX="260" layoutY="410" prefWidth="100" text="Delete" />
 

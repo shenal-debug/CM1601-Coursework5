@@ -53,9 +53,9 @@ public class InventoryFileHandler {
 
                 String cleanedLine = line.replace("|", ",").replace(";", ",");
 
-                String[] data = cleanedLine.split(",");
+                String[] data = cleanedLine.split("\\s*,\\s*", -1);
 
-                if (data.length >= 8) {
+                if (data.length >= 7) {
 
                     try {
 
@@ -74,7 +74,12 @@ public class InventoryFileHandler {
 
                         String category = data[5].trim();
                         String date = data[6].trim();
-                        String image = data[7].trim();
+
+                        String image = "";
+
+                        if (data.length > 7) {
+                            image = data[7].trim();
+                        }
 
                         Part part = new Part(
                                 partCode,
@@ -127,6 +132,64 @@ public class InventoryFileHandler {
         }
 
         return null;
+
+    }
+
+    public boolean updatePart(Part updatedPart) {
+
+        List<Part> partList = getAllParts();
+
+        boolean updated = false;
+
+        for (int i = 0; i < partList.size(); i++) {
+
+            if (partList.get(i).getPartCode()
+                    .equalsIgnoreCase(updatedPart.getPartCode())) {
+
+                partList.set(i, updatedPart);
+                updated = true;
+                break;
+
+            }
+
+        }
+
+        if (!updated) {
+
+            return false;
+
+        }
+
+        try {
+
+            FileWriter writer = new FileWriter(
+                    "src/main/resources/data/inventory_legacy.txt");
+
+            for (Part part : partList) {
+
+                writer.write(
+                        part.getPartCode() + "," +
+                                part.getPartName() + "," +
+                                part.getBrand() + "," +
+                                part.getPrice() + "," +
+                                part.getQuantity() + "," +
+                                part.getCategory() + "," +
+                                part.getDate() + "," +
+                                part.getImage() +
+                                System.lineSeparator()
+                );
+
+            }
+
+            writer.close();
+
+        } catch (IOException e) {
+
+            return false;
+
+        }
+
+        return true;
 
     }
 
