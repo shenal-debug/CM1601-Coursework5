@@ -74,8 +74,29 @@
 
         <Button fx:id="btnViewAll" layoutX="590" layoutY="410" prefWidth="100" text="View All" />
 
+        <Button fx:id="btnLowStock"
+                layoutX="40"
+                layoutY="455"
+                prefWidth="140"
+                text="Low Stock"
+                onAction="#handleLowStock"/>
+
+        <Button fx:id="btnDealerSelection"
+                layoutX="200"
+                layoutY="455"
+                prefWidth="170"
+                text="Dealer Selection"
+                onAction="#handleDealerSelection"/>
+
+        <Button fx:id="btnPointOfSale"
+                layoutX="390"
+                layoutY="455"
+                prefWidth="150"
+                text="Point of Sale"
+                onAction="#handlePointOfSale"/>
+
         <!-- Table -->
-        <TableView fx:id="tableParts" layoutX="40" layoutY="470" prefHeight="200.0" prefWidth="820">
+        <TableView fx:id="tableParts" layoutX="40" layoutY="515" prefHeight="155.0" prefWidth="820">
 
             <columns>
 

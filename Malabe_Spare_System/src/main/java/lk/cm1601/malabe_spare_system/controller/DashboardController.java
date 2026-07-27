@@ -82,4 +82,37 @@ public class DashboardController {
         alert.showAndWait();
     }
 
+    @FXML
+    private void handleLowStock() {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Low Stock");
+        alert.setHeaderText(null);
+        alert.setContentText("Low Stock feature will be implemented in the next commit.");
+        alert.showAndWait();
+
+    }
+
+    @FXML
+    private void handleDealerSelection() {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Dealer Selection");
+        alert.setHeaderText(null);
+        alert.setContentText("Dealer Selection feature will be implemented in the next commit.");
+        alert.showAndWait();
+
+    }
+
+    @FXML
+    private void handlePointOfSale() {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Point of Sale");
+        alert.setHeaderText(null);
+        alert.setContentText("Point of Sale feature will be implemented in the next commit.");
+        alert.showAndWait();
+
+    }
+
 }
