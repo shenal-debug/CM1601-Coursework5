@@ -12,6 +12,7 @@ import lk.cm1601.malabe_spare_system.model.Part;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lk.cm1601.malabe_spare_system.filehandler.AuditLogHandler;
 
 import java.util.List;
 
@@ -136,6 +137,13 @@ public class DashboardController {
 
         InventoryFileHandler fileHandler = new InventoryFileHandler();
         fileHandler.savePart(part);
+
+        AuditLogHandler auditLogHandler = new AuditLogHandler();
+
+        auditLogHandler.writeLog(
+                "ADD PART",
+                part.getPartCode() + " - " + part.getPartName()
+        );
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
@@ -382,6 +390,17 @@ public class DashboardController {
             InventoryFileHandler fileHandler = new InventoryFileHandler();
 
             boolean deleted = fileHandler.deletePart(selectedPart.getPartCode());
+
+            if (deleted) {
+
+                AuditLogHandler auditLogHandler = new AuditLogHandler();
+
+                auditLogHandler.writeLog(
+                        "DELETE PART",
+                        selectedPart.getPartCode() + " - " + selectedPart.getPartName()
+                );
+
+            }
 
             if (deleted) {
 

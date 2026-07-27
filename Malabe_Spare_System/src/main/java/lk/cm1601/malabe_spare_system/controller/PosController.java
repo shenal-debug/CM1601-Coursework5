@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.cm1601.malabe_spare_system.filehandler.InventoryFileHandler;
 import lk.cm1601.malabe_spare_system.model.Part;
+import lk.cm1601.malabe_spare_system.filehandler.AuditLogHandler;
 
 public class PosController {
 
@@ -165,6 +166,15 @@ public class PosController {
         InventoryFileHandler fileHandler = new InventoryFileHandler();
 
         fileHandler.updatePart(updatedPart);
+
+        AuditLogHandler auditLogHandler = new AuditLogHandler();
+
+        auditLogHandler.writeLog(
+                "CHECKOUT",
+                cartPart.getPartCode() +
+                        " - Qty: " + cartQuantity +
+                        " - Total: Rs. " + String.format("%.2f", total)
+        );
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Checkout");
