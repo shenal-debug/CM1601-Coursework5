@@ -70,7 +70,7 @@
 
         <Button fx:id="btnSearch" layoutX="370" layoutY="410" prefWidth="100" text="Search" onAction="#handleSearch" />
 
-        <Button fx:id="btnClear" layoutX="480" layoutY="410" prefWidth="100" text="Clear" />
+        <Button fx:id="btnClear" layoutX="480" layoutY="410" prefWidth="100" text="Clear" onAction="#handleClear"/>
 
         <Button fx:id="btnViewAll" onAction="#handleViewAll" layoutX="590" layoutY="410" prefWidth="100" text="View All" />
 

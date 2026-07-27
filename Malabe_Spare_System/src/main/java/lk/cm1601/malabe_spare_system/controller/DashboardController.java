@@ -365,4 +365,20 @@ public class DashboardController {
 
     }
 
+    @FXML
+    private void handleClear() {
+
+        txtPartCode.clear();
+        txtPartName.clear();
+        txtBrand.clear();
+        txtPrice.clear();
+        txtQuantity.clear();
+        txtDate.clear();
+
+        cmbCategory.getSelectionModel().clearSelection();
+
+        tableParts.getSelectionModel().clearSelection();
+
+    }
+
 }
