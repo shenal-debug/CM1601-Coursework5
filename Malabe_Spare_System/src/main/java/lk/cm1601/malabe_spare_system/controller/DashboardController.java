@@ -9,6 +9,9 @@ import lk.cm1601.malabe_spare_system.filehandler.DealerFileHandler;
 import lk.cm1601.malabe_spare_system.filehandler.InventoryFileHandler;
 import lk.cm1601.malabe_spare_system.model.Dealer;
 import lk.cm1601.malabe_spare_system.model.Part;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -190,14 +193,26 @@ public class DashboardController {
     @FXML
     private void handlePointOfSale() {
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Point of Sale");
-        alert.setHeaderText(null);
-        alert.setContentText("Point of Sale feature will be implemented in the next commit.");
-        alert.showAndWait();
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/lk/cm1601/malabe_spare_system/pos-view.fxml"));
+
+            Stage stage = new Stage();
+
+            stage.setTitle("Point Of Sale");
+
+            stage.setScene(new Scene(loader.load()));
+
+            stage.show();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
 
     }
-
     @FXML
     private void handleViewAll() {
 
