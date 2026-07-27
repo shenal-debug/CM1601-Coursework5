@@ -159,7 +159,10 @@ public class DashboardController {
 
         DealerFileHandler dealerFileHandler = new DealerFileHandler();
 
-        List<Dealer> selectedDealers = dealerFileHandler.getRandomDealers();
+        List<Dealer> selectedDealers =
+                dealerFileHandler.sortDealersByLocation(
+                        dealerFileHandler.getRandomDealers()
+                );
 
         StringBuilder message = new StringBuilder();
 
