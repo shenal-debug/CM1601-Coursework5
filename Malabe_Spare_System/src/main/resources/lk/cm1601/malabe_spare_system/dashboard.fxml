@@ -66,7 +66,7 @@
 
         <Button fx:id="btnUpdate" layoutX="150" layoutY="410" prefWidth="100" text="Update" onAction="#handleUpdate"/>
 
-        <Button fx:id="btnDelete" layoutX="260" layoutY="410" prefWidth="100" text="Delete" />
+        <Button fx:id="btnDelete" layoutX="260" layoutY="410" prefWidth="100" text="Delete" onAction="#handleDelete" />
 
         <Button fx:id="btnSearch" layoutX="370" layoutY="410" prefWidth="100" text="Search" onAction="#handleSearch" />
 
