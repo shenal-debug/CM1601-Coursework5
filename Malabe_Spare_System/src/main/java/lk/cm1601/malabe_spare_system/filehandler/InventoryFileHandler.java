@@ -279,4 +279,24 @@ public class InventoryFileHandler {
 
     }
 
+    public List<Part> getLowStockParts() {
+
+        List<Part> lowStockList = new ArrayList<>();
+
+        List<Part> allParts = getAllParts();
+
+        for (Part part : allParts) {
+
+            if (part.getQuantity() < 10) {
+
+                lowStockList.add(part);
+
+            }
+
+        }
+
+        return lowStockList;
+
+    }
+
 }

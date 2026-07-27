@@ -141,11 +141,13 @@ public class DashboardController {
     @FXML
     private void handleLowStock() {
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Low Stock");
-        alert.setHeaderText(null);
-        alert.setContentText("Low Stock feature will be implemented in the next commit.");
-        alert.showAndWait();
+        InventoryFileHandler fileHandler = new InventoryFileHandler();
+
+        ObservableList<Part> lowStockList = FXCollections.observableArrayList(
+                fileHandler.getLowStockParts()
+        );
+
+        tableParts.setItems(lowStockList);
 
     }
 
