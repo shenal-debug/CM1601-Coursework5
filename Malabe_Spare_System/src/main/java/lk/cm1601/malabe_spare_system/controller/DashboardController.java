@@ -164,4 +164,44 @@ public class DashboardController {
 
     }
 
+    @FXML
+    private void handleSearch() {
+
+        String partCode = txtPartCode.getText().trim();
+
+        if (partCode.isEmpty()) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Search");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a Part Code.");
+            alert.showAndWait();
+            return;
+
+        }
+
+        InventoryFileHandler fileHandler = new InventoryFileHandler();
+
+        Part part = fileHandler.searchPartByCode(partCode);
+
+        ObservableList<Part> partList = FXCollections.observableArrayList();
+
+        if (part != null) {
+
+            partList.add(part);
+
+        } else {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Search");
+            alert.setHeaderText(null);
+            alert.setContentText("Part not found.");
+            alert.showAndWait();
+
+        }
+
+        tableParts.setItems(partList);
+
+    }
+
 }

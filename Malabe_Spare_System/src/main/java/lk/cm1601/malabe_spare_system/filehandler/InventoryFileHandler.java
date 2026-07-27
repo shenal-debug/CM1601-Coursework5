@@ -112,6 +112,24 @@ public class InventoryFileHandler {
 
     }
 
+    public Part searchPartByCode(String partCode) {
+
+        List<Part> parts = getAllParts();
+
+        for (Part part : parts) {
+
+            if (part.getPartCode().equalsIgnoreCase(partCode)) {
+
+                return part;
+
+            }
+
+        }
+
+        return null;
+
+    }
+
     public void savePart(Part part) {
 
         try {
