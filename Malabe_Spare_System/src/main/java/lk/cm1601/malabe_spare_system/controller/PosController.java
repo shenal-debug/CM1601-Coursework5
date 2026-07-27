@@ -40,6 +40,10 @@ public class PosController {
 
     private double total = 0;
 
+    private Part cartPart = null;
+
+    private int cartQuantity = 0;
+
     private int cartItems = 0;
 
     @FXML
@@ -100,7 +104,22 @@ public class PosController {
 
         }
 
-        total += qty * selectedPart.getPrice();
+        double subTotal = qty * selectedPart.getPrice();
+
+        String message = "Item added to cart.";
+
+        if (qty >= 5) {
+
+            subTotal = subTotal * 0.90;
+
+            message = "Item added to cart.\n\nBulk Discount Applied (10%).";
+
+        }
+
+        total += subTotal;
+
+        cartPart = selectedPart;
+        cartQuantity = qty;
 
         cartItems++;
 
@@ -109,7 +128,7 @@ public class PosController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cart");
         alert.setHeaderText(null);
-        alert.setContentText("Item added to cart.");
+        alert.setContentText(message);
         alert.showAndWait();
 
     }
@@ -117,7 +136,7 @@ public class PosController {
     @FXML
     private void handleCheckout() {
 
-        if (total == 0) {
+        if (cartPart == null) {
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Checkout");
@@ -128,19 +147,42 @@ public class PosController {
 
         }
 
+        int remainingStock = cartPart.getQuantity() - cartQuantity;
+
+        Part updatedPart = new Part(
+
+                cartPart.getPartCode(),
+                cartPart.getPartName(),
+                cartPart.getBrand(),
+                cartPart.getPrice(),
+                remainingStock,
+                cartPart.getCategory(),
+                cartPart.getDate(),
+                cartPart.getImage()
+
+        );
+
+        InventoryFileHandler fileHandler = new InventoryFileHandler();
+
+        fileHandler.updatePart(updatedPart);
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Checkout");
         alert.setHeaderText("Purchase Successful");
         alert.setContentText("Total Amount : Rs. " + String.format("%.2f", total));
         alert.showAndWait();
 
+        tableInventory.setItems(
+                FXCollections.observableArrayList(fileHandler.getAllParts())
+        );
+
         total = 0;
         cartItems = 0;
+        cartPart = null;
+        cartQuantity = 0;
 
         lblTotal.setText("0.00");
-
         txtQuantity.clear();
-
         tableInventory.getSelectionModel().clearSelection();
 
     }
