@@ -135,6 +135,30 @@ public class InventoryFileHandler {
 
     }
 
+    public List<Part> searchParts(String keyword) {
+
+        List<Part> allParts = getAllParts();
+        List<Part> results = new ArrayList<>();
+
+        keyword = keyword.toLowerCase();
+
+        for (Part part : allParts) {
+
+            if (part.getPartCode().toLowerCase().contains(keyword)
+                    || part.getPartName().toLowerCase().contains(keyword)
+                    || part.getBrand().toLowerCase().contains(keyword)
+                    || part.getCategory().toLowerCase().contains(keyword)) {
+
+                results.add(part);
+
+            }
+
+        }
+
+        return results;
+
+    }
+
     public boolean updatePart(Part updatedPart) {
 
         List<Part> partList = getAllParts();

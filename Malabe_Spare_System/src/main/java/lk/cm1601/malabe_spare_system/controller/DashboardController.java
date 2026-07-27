@@ -37,6 +37,9 @@ public class DashboardController {
     private TextField txtDate;
 
     @FXML
+    private TextField txtSearch;
+
+    @FXML
     private ComboBox<String> cmbCategory;
 
     @FXML
@@ -237,14 +240,14 @@ public class DashboardController {
     @FXML
     private void handleSearch() {
 
-        String partCode = txtPartCode.getText().trim();
+        String keyword = txtSearch.getText().trim();
 
-        if (partCode.isEmpty()) {
+        if (keyword.isEmpty()) {
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Search");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter a Part Code.");
+            alert.setContentText("Please enter a search keyword.");
             alert.showAndWait();
             return;
 
@@ -252,20 +255,17 @@ public class DashboardController {
 
         InventoryFileHandler fileHandler = new InventoryFileHandler();
 
-        Part part = fileHandler.searchPartByCode(partCode);
+        ObservableList<Part> partList =
+                FXCollections.observableArrayList(
+                        fileHandler.searchParts(keyword)
+                );
 
-        ObservableList<Part> partList = FXCollections.observableArrayList();
-
-        if (part != null) {
-
-            partList.add(part);
-
-        } else {
+        if (partList.isEmpty()) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Search");
             alert.setHeaderText(null);
-            alert.setContentText("Part not found.");
+            alert.setContentText("No matching parts found.");
             alert.showAndWait();
 
         }

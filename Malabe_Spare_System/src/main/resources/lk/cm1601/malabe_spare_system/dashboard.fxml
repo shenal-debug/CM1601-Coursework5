@@ -61,39 +61,26 @@
 
         <TextField fx:id="txtDate" layoutX="150" layoutY="345" prefWidth="220" promptText="YYYY/MM/DD" />
 
+        <TextField fx:id="txtSearch" layoutX="400" layoutY="105" prefWidth="220" promptText="Search by Code, Name, Brand or Category" />
+
         <!-- Buttons -->
-        <Button fx:id="btnAdd" layoutX="40" layoutY="410" prefWidth="100" text="Add Part" onAction="#handleAddPart"/>
+        <Button fx:id="btnAdd" layoutX="40" layoutY="410" onAction="#handleAddPart" prefWidth="100" text="Add Part" />
 
-        <Button fx:id="btnUpdate" layoutX="150" layoutY="410" prefWidth="100" text="Update" onAction="#handleUpdate"/>
+        <Button fx:id="btnUpdate" layoutX="150" layoutY="410" onAction="#handleUpdate" prefWidth="100" text="Update" />
 
-        <Button fx:id="btnDelete" layoutX="260" layoutY="410" prefWidth="100" text="Delete" onAction="#handleDelete" />
+        <Button fx:id="btnDelete" layoutX="260" layoutY="410" onAction="#handleDelete" prefWidth="100" text="Delete" />
 
-        <Button fx:id="btnSearch" layoutX="370" layoutY="410" prefWidth="100" text="Search" onAction="#handleSearch" />
+        <Button fx:id="btnSearch" layoutX="627.0" layoutY="106.0" onAction="#handleSearch" prefWidth="100" text="Search" />
 
-        <Button fx:id="btnClear" layoutX="480" layoutY="410" prefWidth="100" text="Clear" onAction="#handleClear"/>
+        <Button fx:id="btnClear" layoutX="370.0" layoutY="410.0" onAction="#handleClear" prefWidth="100" text="Clear" />
 
-        <Button fx:id="btnViewAll" onAction="#handleViewAll" layoutX="590" layoutY="410" prefWidth="100" text="View All" />
+        <Button fx:id="btnViewAll" layoutX="483.0" layoutY="410.0" onAction="#handleViewAll" prefWidth="100" text="View All" />
 
-        <Button fx:id="btnLowStock"
-                layoutX="40"
-                layoutY="455"
-                prefWidth="140"
-                text="Low Stock"
-                onAction="#handleLowStock"/>
+        <Button fx:id="btnLowStock" layoutX="40" layoutY="455" onAction="#handleLowStock" prefWidth="140" text="Low Stock" />
 
-        <Button fx:id="btnDealerSelection"
-                layoutX="200"
-                layoutY="455"
-                prefWidth="170"
-                text="Dealer Selection"
-                onAction="#handleDealerSelection"/>
+        <Button fx:id="btnDealerSelection" layoutX="200" layoutY="455" onAction="#handleDealerSelection" prefWidth="170" text="Dealer Selection" />
 
-        <Button fx:id="btnPointOfSale"
-                layoutX="390"
-                layoutY="455"
-                prefWidth="150"
-                text="Point of Sale"
-                onAction="#handlePointOfSale"/>
+        <Button fx:id="btnPointOfSale" layoutX="390" layoutY="455" onAction="#handlePointOfSale" prefWidth="150" text="Point of Sale" />
 
         <!-- Table -->
         <TableView fx:id="tableParts" layoutX="40" layoutY="515" prefHeight="155.0" prefWidth="820">
